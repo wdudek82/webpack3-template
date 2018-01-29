@@ -1,10 +1,11 @@
-require('./main.css');
-require('./index.html');
+import 'babel-runtime/regenerator';
+import './main.css';
+import './index.html';
 
-console.log('Hello, World!');
-
-let a = () => {
-  console.log('Hello from the future');
+let a = async (args) => {
+  const { foo, bar } = args
+  await console.log('Hello from the future!', foo, bar);
+  console.log('Done');
 }
 
-a();
+a({ foo: 'Paulina', bar: 'Neevor' });

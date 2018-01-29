@@ -1,18 +1,20 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const path = require("path");
+const path = require('path');
 
 module.exports = {
   entry: {
-    main: "./src/main.js"
+    // Using Polyfills
+    // main: ['babel-polyfill', './src/main.js']
+    main: './src/main.js'
   },
   output: {
-    filename: "[name]-bundle.js",
-    path: path.resolve(__dirname, "../dist")
+    filename: '[name]-bundle.js',
+    path: path.resolve(__dirname, '../dist')
   },
 
   // Devserver
   devServer: {
-    contentBase: "dist",
+    contentBase: 'dist',
     overlay: true
   },
 
@@ -49,16 +51,16 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: "file-loader",
+            loader: 'file-loader',
             options: {
-              name: "[name].html"
+              name: '[name].html'
             }
           },
           {
-            loader: "extract-loader"
+            loader: 'extract-loader'
           },
           {
-            loader: "html-loader",
+            loader: 'html-loader',
             options: {
               attrs: ['img:src']
             }
