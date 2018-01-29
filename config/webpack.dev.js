@@ -1,5 +1,6 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: {
@@ -12,10 +13,14 @@ module.exports = {
     path: path.resolve(__dirname, '../dist')
   },
 
-  // Devserver
+  // Dev Server
   devServer: {
     contentBase: 'dist',
-    overlay: true
+    overlay: true,
+    hot: true,
+    stats: {
+      colors: true
+    }
   },
 
   // Module
@@ -85,6 +90,8 @@ module.exports = {
 
   // Extracting styles
   plugins: [
-    new ExtractTextPlugin('main.css')
+    new ExtractTextPlugin('main.css'),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NamedModulesPlugin()
   ]
 };

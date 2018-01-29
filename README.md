@@ -10,3 +10,7 @@
 TODO:
 5. loaders for scss/sass, etc.
 6. loaders for pug/other template engines,
+
+
+### Tags
+1. v1.1 - Webpack and Babel with standard Webpack Dev Server
