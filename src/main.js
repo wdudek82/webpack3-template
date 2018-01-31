@@ -1,7 +1,8 @@
 import 'babel-runtime/regenerator';
-import 'webpack-hot-middleware/client';
+import 'webpack-hot-middleware/client?reload=true';
 import './main.css';
 import './index.html';
+import { debug } from 'util';
 
 let a = async (args) => {
   const { foo, bar } = args
@@ -10,3 +11,5 @@ let a = async (args) => {
 }
 
 a({ foo: 'Paulina', bar: 'Neevor' });
+
+console.log('Hello, neevor!');

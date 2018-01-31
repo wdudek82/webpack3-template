@@ -1,11 +1,10 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
   entry: {
-    // Using Polyfills
-    // main: ['babel-polyfill', './src/main.js']
     main: './src/main.js'
   },
   output: {
@@ -22,6 +21,8 @@ module.exports = {
       colors: true
     }
   },
+
+  devtool: 'source-map',
 
   // Module
   module: {
@@ -56,15 +57,6 @@ module.exports = {
         test: /\.html$/,
         use: [
           {
-            loader: 'file-loader',
-            options: {
-              name: '[name].html'
-            }
-          },
-          {
-            loader: 'extract-loader'
-          },
-          {
             loader: 'html-loader',
             options: {
               attrs: ['img:src']
@@ -92,6 +84,9 @@ module.exports = {
   plugins: [
     new ExtractTextPlugin('main.css'),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin()
+    new webpack.NamedModulesPlugin(),
+    new HTMLWebpackPlugin({
+      template: './src/index.html'
+    })
   ]
 };
